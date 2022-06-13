@@ -1,4 +1,7 @@
 <%@ page pageEncoding="utf-8" %>
+<%@page import="entity.Node"%>
+<%@ page import="java.util.List" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-cn">
 
@@ -10,18 +13,55 @@
     <title></title>
     <link rel="stylesheet" href="./layui/css/layui.css">
 </head>
+<style>
+    #pingtimeInput {
 
+        width: 800px;
+
+        height: 10px;
+
+        background: rgba(60, 114, 230, .8);
+
+        border: 1px solid #333;
+
+        -webkit-border-radius: 5px;
+
+        -webkit-appearance: none !important;
+
+    }
+</style>
 <body>
 <div id="main" style="width: 800px;height:400px;border:1px solid #ccc"></div>
 <div style="width: 400px;height:50px;">
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>时间戳设置</legend>
     </fieldset>
-    <div id="slide" class="demo-slider"></div>
+    <form action="QueryByPingtimeController" method="post">
+        <input type="range" id="pingtimeInput" name="pingtimeInput" min="0" max="1650872880" step="2" value="1650872880"  oninput="document.getElementById('pingtimeInput').innerHTML = this.value ;document.getElementById('pingtimeShow').innerHTML = this.value " />
+        <span id="pingtimeShow">1650872880</span>
+        <input type="submit" value="查询"/>
+    </form>
+
+
 </div>
 <div class="layui-btn-container"  style="margin-top: 20px; margin-left: 50px;">
     <button type="button" class="layui-btn">结束探测</button>
 </div>
+
+    <%
+        List<Node> Nodes=(List<Node>)session.getAttribute("nodequery");
+        if(Nodes!=null){
+            for(Node Node : Nodes){
+    %>
+        <%=Node.getIp() %>
+        <%=Node.getPort() %>
+
+<%
+        }
+    }
+%>
+
+
 <script src="js/echarts.min.js"></script>
 <script src="js/world.js"></script>
 <script src="./layui/layui.js"></script>
@@ -233,18 +273,18 @@
         ]
     };
     myChart.setOption(option); </script>
-<script>
-    layui.use('slider', function () {
-        var $ = layui.$
-            , slider = layui.slider;
-        //定义初始值
-        slider.render({
-            elem: '#slide'
-            , value: 20 //初始值
-        });
-
-    });
-</script>
+<%--<script>--%>
+<%--    // layui.use('slider', function () {--%>
+<%--    //     var $ = layui.$--%>
+<%--    //         , slider = layui.slider;--%>
+<%--    //     //定义初始值--%>
+<%--    //     slider.render({--%>
+<%--    //         elem: '#slide'--%>
+<%--    //         , value: 20 //初始值--%>
+<%--    //     });--%>
+<%--    //--%>
+<%--    // });--%>
+<%--</script>--%>
 
 </body>
 
