@@ -32,14 +32,14 @@
   </ul>
   <ul style="display:block">
     <h2>
-      <a href="/Epidemic_System/ManageNoticeByPageServlet" target="right"><span class="icon-caret-right"></span>
+      <a href="analysis.jsp" target="right"><span class="icon-caret-right"></span>
         <font color="white">数据分析</font>
       </a>
     </h2>
   </ul>
   <ul style="display:block">
     <h2>
-      <a href="/Epidemic_System/ManageNoticeByPageServlet" target="right"><span class="icon-caret-right"></span>
+      <a href="https://dsg-titech.github.io/simblock-visualizer/" target="right"><span class="icon-caret-right"></span>
         <font color="white">仿真预测</font>
       </a>
     </h2>
@@ -60,7 +60,7 @@
   });
 </script>
 <div class="admin">
-  <iframe scrolling="auto" rameborder="0" src="welcome_admin.jsp" name="right" width="100%" height="100%"></iframe>
+  <iframe scrolling="auto" rameborder="0" src="welcome_setting.jsp" name="right" width="100%" height="100%"></iframe>
 </div>
 </body>
 

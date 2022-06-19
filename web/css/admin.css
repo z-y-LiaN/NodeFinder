@@ -1,6 +1,6 @@
 body{ color:#333; font-size:13px;}
 input,select,textarea{color:#333;}
-.bg{ width:100%; height:100%; position:absolute;}
+/*.bg{ width:100%; height:100%; position:absolute; background:url(../images/bg.jpg) }*/
 .panel{background:#fff;}
 form .form-group:last-child{padding-bottom:0;}
 .passcode{position:absolute;right:0;bottom:0;height:32px;margin:1px;border-left:solid 1px #ddd;text-align:center;line-height:32px;border-radius:0 4px 4px 0;}
@@ -12,13 +12,14 @@ ul,li{ list-style-type:none;}
 .field-icon-right .icon{ bottom:0px; top:auto}
 .logo{ float:left; color:#FFF; margin-top:10px; line-height:45px;}
 .logo img{ float:left; margin-right:10px;}
+/*.loginbox { background:url(../images/tmbg-white.png); border:0px;}*/
 /********头部******/
-.header{height:70px; overflow:hidden;  }
+/*.header{height:70px; overflow:hidden; background:url(../images/bg.jpg) no-repeat 0 -1000px; }*/
 .head-l{ float:left; margin-top:17px; margin-left:15px; }
 .head-l .button{ padding:8px 15px;}
 .head-l .bg-blue:hover{ background-color:#03b6fd;}
-.leftnav{width:180px; height:100%; position:fixed; top:70px; left:0px;}
-.leftnav-title { height:50px;  color:#FFF; padding-left:22px;  font-size:14px; line-height:50px;}
+.leftnav{width:180px; height:100%;position:fixed; top:70px; left:0px;}
+.leftnav-title { height:50px; color:#FFF; padding-left:22px;  font-size:14px; line-height:50px;}
 .leftnav-title span{ margin-right:10px;}
 .leftnav h2{ padding:10px 0 10px 22px; transition:all .1s ease-in-out; display:block; cursor:pointer; font-weight:bold; font-size:14px; border-top:1px solid #b5cfd9;}
 .leftnav h2.on{ color:#09c;}
@@ -27,12 +28,12 @@ ul,li{ list-style-type:none;}
 .leftnav h2:hover{ color:#09c;}
 .leftnav ul {display:none; border-top:1px solid #b5cfd9; padding:5px 0; opacity:1;}
 .leftnav ul li{ list-style-type:none;  }
-.leftnav ul li a{ display:block;padding-left:30px;line-height:30px; }
+.leftnav ul li a{ display:block;padding-left:0px;line-height:30px; }
 .leftnav ul li span{ margin-right:8px;}
 .leftnav ul li a:hover,.leftnav ul li a.on{ color:#09c;}
 
 /***主要内容***/
-.admin{background:#fff;position:fixed;border-left:solid 1px #b5cfd9;right:0;bottom:0;top:110px;left:180px; padding:15px; padding-right:0px; padding-bottom:0px; overflow:auto; border-top:1px solid #b5cfd9; padding-right:15px;}
+.admin{background:#fff;position:fixed;border-left:solid 1px #b5cfd9;right:0;bottom:0;top:80px;left:180px; padding:15px; padding-right:0px; padding-bottom:0px; overflow:auto; border-top:1px solid #b5cfd9; padding-right:15px;}
 .content{width:100%;}
 .body-content{padding:20px 0; overflow:hidden;}
 .content .title{ border-bottom:1px solid #dfdfdf; line-height:35px; font-size:14px; font-weight:bold; color:#09c}
@@ -75,20 +76,20 @@ textarea[name=content]{width:100%; height:500px; border:1px solid #ddd; border-r
 .mybody-content{padding:20px 0; overflow:hidden}
 /*固定在底部*/
 .isbottom{display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            flex: 1;
-            /* position: absolute;
-    bottom: 0;
-    left: 45%; */
-            }
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    /* position: absolute;
+bottom: 0;
+left: 45%; */
+}
 /*input file  */
-.myfile-box{ position:relative;width:340px} 
-.mytxt{ height:22px; border:1px solid #cdcdcd; width:180px;} 
-.mybtn{ background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px;} 
-.myfile{ position:absolute; top:0; right:80px; height:24px; filter:alpha(opacity:0);opacity: 0;width:260px } 
+.myfile-box{ position:relative;width:340px}
+.mytxt{ height:22px; border:1px solid #cdcdcd; width:180px;}
+.mybtn{ background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px;}
+/* .myfile{ position:absolute; top:0; right:80px; height:24px; filter:alpha(opacity:0);opacity: 0;width:260px }  */
 /* Table Styles */
 
 .table-wrapper{
@@ -105,7 +106,7 @@ textarea[name=content]{width:100%; height:500px; border:1px solid #ddd; border-r
     width: 100%;
     max-width: 100%;
     /* white-space: nowrap;*/
-    background-color: white; 
+    background-color: white;
 }
 
 .fl-table td, .fl-table th {
@@ -137,8 +138,8 @@ textarea[name=content]{width:100%; height:500px; border:1px solid #ddd; border-r
 
 @media (max-width: 767px) {
     .fl-table {
-       /*  display: block;
-        width: 100%; */
+        /*  display: block;
+         width: 100%; */
     }
     .table-wrapper:before{
         /* content: "Scroll horizontally >";
@@ -164,7 +165,7 @@ textarea[name=content]{width:100%; height:500px; border:1px solid #ddd; border-r
     }
     .fl-table td, .fl-table th {
         padding: 20px .625em .625em .625em;
-       /*  height: 60px; */
+        /*  height: 60px; */
         vertical-align: middle;
         box-sizing: border-box;
         /* overflow-x: hidden;
@@ -200,18 +201,18 @@ textarea[name=content]{width:100%; height:500px; border:1px solid #ddd; border-r
 }
 /* 自定义 */
 table .td1-hide{
-	list-style:none;
-	max-width:100px;
-	white-space:nowrap;
-	text-overflow:ellipsis; 
-	overflow: hidden;
-	margin-top:5px; 
+    list-style:none;
+    max-width:100px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    margin-top:5px;
 }
 table .td2-show{
-	list-style:none;
-	max-width:100px;
-	word-break:break-all;
-	margin-top:5px;
+    list-style:none;
+    max-width:100px;
+    word-break:break-all;
+    margin-top:5px;
 }
 
 

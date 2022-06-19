@@ -1,7 +1,4 @@
 <%@ page pageEncoding="utf-8" %>
-<%@page import="entity.Node"%>
-<%@ page import="java.util.List" %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-cn">
 
@@ -14,13 +11,42 @@
     <link rel="stylesheet" href="./layui/css/layui.css">
 </head>
 <style>
-    #pingtimeInput {
+    input[type="range"] {
+        -webkit-appearance: none; /* 去除默认样式 */
+        background: -webkit-linear-gradient(#2e9cfb, #2e9cfb) no-repeat, #2e9cfb;
+        background-size: 0 100%;
+        width: 100%;
+        height: 10px;
+        border-radius: 15px;
 
-        width: 800px;
+    }
+    /* 去除获取焦点时的边框 */
+    input[type="range"]:focus {
+        outline: none;
+    }
+
+    /* chrome自定义滑动轨道 */
+    input[type="range"]::-webkit-slider-runnable-track {
+        height: 10px;
+        border-radius: 15px;
+    }
+
+    /* chrome自定义滑块 */
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 10px;
+        height: 20px;
+        background: rgb(241, 241, 241);
+        border-radius: 0 0 5px 5px;
+        transform: translateY(-5px);
+    }
+    /* #pingtimeInput {
+
+        width: 100%;
 
         height: 10px;
 
-        background: rgba(60, 114, 230, .8);
+        background: rgba(61, 190, 229, 0.8);
 
         border: 1px solid #333;
 
@@ -28,45 +54,98 @@
 
         -webkit-appearance: none !important;
 
-    }
+    } */
 </style>
+
 <body>
-<div id="main" style="width: 800px;height:400px;border:1px solid #ccc"></div>
-<div style="width: 400px;height:50px;">
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>时间戳设置</legend>
-    </fieldset>
-    <form action="QueryByPingtimeController" method="post">
-        <input type="range" id="pingtimeInput" name="pingtimeInput" min="0" max="1650872880" step="2" value="1650872880"  oninput="document.getElementById('pingtimeInput').innerHTML = this.value ;document.getElementById('pingtimeShow').innerHTML = this.value " />
-        <span id="pingtimeShow">1650872880</span>
-        <input type="submit" value="查询"/>
-    </form>
+<div class="layui-row">
+    <div class="layui-col-md8">
+        <div id="worldmap" style="width: 700px;height:500px;border:1px solid #ccc"></div>
+    </div>
+    <div class="layui-col-md4">
+        <table class="layui-table">
+            <colgroup>
+                <col width="50">
+                <col width="20">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>数据</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>节点数</td>
+                <td>xxx</td>
+            </tr>
+            <tr>
+                <td>连接数</td>
+                <td>xxx</td>
+            </tr>
+            <tr>
+                <td>路由节点数</td>
+                <td>xxx</td>
+            </tr>
+            <tr>
+                <td>活跃节点数</td>
+                <td>xxx</td>
+            </tr>
+            <tr>
+                <td>总算力</td>
+                <td>xxx</td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="width: 100%;height:10px;">
+            <form class="layui-form" action="QueryByPingtimeController" method="post">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>时间戳设置</legend>
+                </fieldset>
+                <div class="layui-form-item">
+                    <input type="range" id="pingtimeInput" name="pingtimeInput" min="0" max="1650872880" step="2"
+                           value="1650872880"
+                           oninput="document.getElementById('pingtimeInput').innerHTML = this.value ;document.getElementById('pingtimeShow').innerHTML = this.value " />
+                </div>
+                <span id="pingtimeShow">1650872880</span>&nbsp;
+                <!-- <input type="submit" class="layui-btn layui-btn-normal" value="查询" /> -->
+                <div class="layui-btn-container" style="margin-left: 30%;margin-top: 10px;">
+                    <button type="submit" class="layui-btn layui-btn-normal">开始探测</button>
+                </div>
+                <div class="layui-btn-container" style="margin-left: 30%;margin-top: 10px;">
+                    <button type="button" class="layui-btn layui-btn-normal">结束探测</button>
+                </div>
+            </form>
 
+            <div>
+            </div>
+        </div>
+    </div>
 
 </div>
-<div class="layui-btn-container"  style="margin-top: 20px; margin-left: 50px;">
-    <button type="button" class="layui-btn">结束探测</button>
-</div>
 
-    <%
-        List<Node> Nodes=(List<Node>)session.getAttribute("nodequery");
-        if(Nodes!=null){
-            for(Node Node : Nodes){
-    %>
-        <%=Node.getIp() %>
-        <%=Node.getPort() %>
 
-<%
-        }
-    }
-%>
+
+<%--<!-- <%--%>
+<%--        List<Node> Nodes=(List<Node>)session.getAttribute("nodequery");--%>
+<%--        if(Nodes!=null){--%>
+<%--            for(Node Node : Nodes){--%>
+<%--    %>--%>
+<%--        <%=Node.getIp() %>--%>
+<%--        <%=Node.getPort() %>--%>
+
+<%--<%--%>
+<%--        }--%>
+<%--    }--%>
+<%--%> -->--%>
 
 
 <script src="js/echarts.min.js"></script>
 <script src="js/world.js"></script>
 <script src="./layui/layui.js"></script>
 <script type="text/javascript">
-    var myChart = echarts.init(document.getElementById('main'));
+    var myChart = echarts.init(document.getElementById('worldmap'));
     option = {
         title: {
             sublink: 'http://esa.un.org/wpp/Excel-Data/population.htm',
@@ -273,19 +352,6 @@
         ]
     };
     myChart.setOption(option); </script>
-<%--<script>--%>
-<%--    // layui.use('slider', function () {--%>
-<%--    //     var $ = layui.$--%>
-<%--    //         , slider = layui.slider;--%>
-<%--    //     //定义初始值--%>
-<%--    //     slider.render({--%>
-<%--    //         elem: '#slide'--%>
-<%--    //         , value: 20 //初始值--%>
-<%--    //     });--%>
-<%--    //--%>
-<%--    // });--%>
-<%--</script>--%>
-
 </body>
 
 </html>
