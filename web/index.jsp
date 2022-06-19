@@ -32,7 +32,7 @@
   </ul>
   <ul style="display:block">
     <h2>
-      <a href="analysis.jsp" target="right"><span class="icon-caret-right"></span>
+      <a href="${pageContext.request.contextPath}/DataAnalyzerController" target="right"><span class="icon-caret-right"></span>
         <font color="white">数据分析</font>
       </a>
     </h2>

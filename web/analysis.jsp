@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: 周周周同学
   Date: 2022/6/18
@@ -34,6 +36,10 @@
 </head>
 
 <body style="visibility: hidden;">
+<%
+    List<String>data_list=(List<String>) session.getAttribute("data_list");
+    List<String>type_list=(List<String>) session.getAttribute("type_list");
+%>
 <div class="container-flex" tabindex="0" hidefocus="true">
     <div class="box-left">
         <div class="left-top">
@@ -49,34 +55,15 @@
                     </tr>
                     </thead>
                     <tbody id="tList">
+                    <%
+                        for(int i=0;i<7;i++)
+                        {
+                    %>
                     <tr>
-                        <td>探测到的所有节点</td>
-                        <td>xxx</td>
+                        <td><%=type_list.get(i)%></td>
+                        <td><%=data_list.get(i)%></td>
                     </tr>
-                    <tr>
-                        <td>探测到的IP地址</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>IP地址变化的节点</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>运行多个节点的IP地址</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>有路由表的节点</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>活跃节点总数</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>可路由节点</td>
-                        <td>xxx</td>
-                    </tr>
+                    <%}%>
 
                     </tbody>
                 </table>
@@ -96,38 +83,15 @@
                     </tr>
                     </thead>
                     <tbody id="tList">
+                    <%
+                        for(int i=7;i<15;i++)
+                        {
+                    %>
                     <tr>
-                        <td>节点总数</td>
-                        <td>xxx</td>
+                        <td><%=type_list.get(i)%></td>
+                        <td><%=data_list.get(i)%></td>
                     </tr>
-                    <tr>
-                        <td>去除孤点后的节点总数</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>平均度</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>平均最短路径长度</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>平均聚集系数</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>网络直径</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>度数大于4的节点数量</td>
-                        <td>xxx</td>
-                    </tr>
-                    <tr>
-                        <td>平均路由表大小</td>
-                        <td>xxx</td>
-                    </tr>
+                    <%}%>
                     </tbody>
                 </table>
 
@@ -229,7 +193,7 @@
                 <h6>拓扑中节点的度分布</h6>
             </div>
             <div class="chart-box pie-chart">
-                <div id="dufenbu_data" style="width: 100%; height: 100%;"></div>
+                <div id="dufenbu_data" style="width: 100%; height: 100%;" data=></div>
 
             </div>
         </div>
@@ -237,6 +201,33 @@
 </div>
 
 </body>
+<%
+    List<String>degree_list=(List<String>)session.getAttribute("degree_list");
+    List<String>bin_list=(List<String>)session.getAttribute("bin_list");
+    if (degree_list==null)
+        degree_list=new ArrayList<String>();
+    if (bin_list==null)
+        bin_list=new ArrayList<String>();
+%>
+<script type="text/javascript">
+    var degree=[];
+    <%
+    for(String degree:degree_list)
+        {%>
+    degree.push(<%=degree%>);
+    <%
+        }
+    %>
+    var bin=[];
+    <%
+    for(String bin:bin_list)
+        {%>
+    bin.push(<%=bin%>);
+    <%
+        }
+    %>
+
+</script>
 <script type="text/javascript" src="analysis_style/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="analysis_style/js/layer/layer.min.js"></script>
 <script type="text/javascript" src="analysis_style/js/layer/laydate/laydate.js"></script>
@@ -245,7 +236,6 @@
 <script type="text/javascript" src="analysis_style/js/macarons.js"></script>
 <script type="text/javascript" src="analysis_style/js/shine.js"></script>
 <script type="text/javascript" src="analysis_style/js/base.js"></script>
-
 <script type="text/javascript">
     $('document').ready(function () {
         $("body").css('visibility', 'visible');

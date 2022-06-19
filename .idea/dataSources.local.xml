@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="IU-213.7172.25">
-    <data-source name="nodefinder_db" uuid="47b0edfc-7539-4101-974f-944b887aa4dc">
-      <database-info product="MySQL" version="8.0.28" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.28" exact-driver-version="8.0">
+  <component name="dataSourceStorageLocal" created-in="IU-212.5284.40">
+    <data-source name="nodefinder_db" uuid="6286c058-63a8-43ac-88a2-5eaf5f9bb091">
+      <database-info product="MySQL" version="8.0.28" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.29 (Revision: dd61577595edad45c398af508cf91ad26fc4144f)" dbms="MYSQL" exact-version="8.0.28" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
