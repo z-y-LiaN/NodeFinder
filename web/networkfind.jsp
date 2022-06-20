@@ -125,7 +125,12 @@
                            value="1650872880"
                            oninput="document.getElementById('TimestampInput').innerHTML = this.value ;document.getElementById('TimestampShow').innerHTML = this.value " />
                 </div>
-                <span id="TimestampShow">1650872880</span>&nbsp;
+                <%
+                    String Timestamp=(String) session.getAttribute("Cur_Timestamp");
+                    if(Timestamp==null)
+                        Timestamp="1650872880";
+                %>
+                <span id="TimestampShow"><%=Timestamp%></span>&nbsp;
                 <!-- <input type="submit" class="layui-btn layui-btn-normal" value="查询" /> -->
                 <div class="layui-btn-container" style="margin-left: 30%;margin-top: 10px;">
                     <button type="submit" class="layui-btn layui-btn-normal">开始探测</button>

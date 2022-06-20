@@ -42,5 +42,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Maven: com.maxmind.geoip2:geoip2:2.13.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.47" level="project" />
   </component>
 </module>

@@ -1,6 +1,4 @@
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Arrays" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.*" %><%--
   Created by IntelliJ IDEA.
   User: 周周周同学
   Date: 2022/6/18
@@ -111,6 +109,11 @@
             <div class="title-box" style="width: 3.5em;">
                 <h6>不同算法效果对比数据表</h6>
             </div>
+            <%
+                HashMap<String,List<String>>consensus= (HashMap<String,List<String>>)session.getAttribute("consensus");
+                if(consensus==null)
+                    consensus=new HashMap<String,List<String>>();
+            %>
             <div class="chart-box">
                 <table class="table3">
                     <thead>
@@ -125,45 +128,45 @@
                     <tbody id="tList">
                     <tr>
                         <td>活跃度算法</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
+                        <td><%=consensus.get("MY1").get(0)%></td>
+                        <td><%=consensus.get("MY1").get(1)%></td>
+                        <td><%=consensus.get("MY1").get(2)%></td>
+                        <td><%=consensus.get("MY1").get(3)%></td>
                     </tr>
                     <tr>
                         <td>度中心性算法</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
+                        <td><%=consensus.get("DEG").get(0)%></td>
+                        <td><%=consensus.get("DEG").get(1)%></td>
+                        <td><%=consensus.get("DEG").get(2)%></td>
+                        <td><%=consensus.get("DEG").get(3)%></td>
                     </tr>
                     <tr>
                         <td>聚集系数算法</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
+                        <td><%=consensus.get("MY2").get(0)%></td>
+                        <td><%=consensus.get("MY2").get(1)%></td>
+                        <td><%=consensus.get("MY2").get(2)%></td>
+                        <td><%=consensus.get("MY2").get(3)%></td>
                     </tr>
                     <tr>
                         <td>活跃度-聚集系数算法</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
+                        <td><%=consensus.get("MY3").get(0)%></td>
+                        <td><%=consensus.get("MY3").get(1)%></td>
+                        <td><%=consensus.get("MY3").get(2)%></td>
+                        <td><%=consensus.get("MY3").get(3)%></td>
                     </tr>
                     <tr>
                         <td>随机算法</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
+                        <td><%=consensus.get("RAND").get(0)%></td>
+                        <td><%=consensus.get("RAND").get(1)%></td>
+                        <td><%=consensus.get("RAND").get(2)%></td>
+                        <td><%=consensus.get("RAND").get(3)%></td>
                     </tr>
                     <tr>
                         <td>介数中心性算法</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
+                        <td><%=consensus.get("BET").get(0)%></td>
+                        <td><%=consensus.get("BET").get(1)%></td>
+                        <td><%=consensus.get("BET").get(2)%></td>
+                        <td><%=consensus.get("BET").get(3)%></td>
                     </tr>
                     </tbody>
                 </table>
@@ -172,19 +175,24 @@
         </div>
 
     </div>
+    <%
+        Map<String, Object> raw_data=(Map<String, Object>)session.getAttribute("raw_data");
+        if(raw_data==null)
+            raw_data=new HashMap<String,Object>();
+    %>
     <div class="box-right">
         <div class="right-top">
             <div class="current-num">
                 <div>未移除任何关键节点的平均共识达成时间</div>
-                <p>4186.425742574257 ms</p>
+                <p><%=raw_data.get("平均共识达成时间")%> ms</p>
             </div>
             <div class="current-num">
                 <div>未移除任何关键节点的平均块传播时间</div>
-                <p>4.367421017027051 s</p>
+                <p><%=raw_data.get("平均块传播时间")%> s</p>
             </div>
             <div class="current-num">
                 <div>未移除任何关键节点的出块时间</div>
-                <p>573574.5445544554 ms</p>
+                <p><%=raw_data.get("平均出块时间")%> ms</p>
             </div>
 
         </div>
@@ -226,7 +234,54 @@
     <%
         }
     %>
-
+    var MY1=[];
+    var MY2=[];
+    var MY3=[];
+    var DEG=[];
+    var BET=[];
+    var RAND=[];
+    <%
+   for(String value:consensus.get("MY1"))
+       {%>
+    MY1.push(<%=value%>);
+    <%
+        }
+    %>
+    <%
+   for(String value:consensus.get("MY2"))
+       {%>
+    MY2.push(<%=value%>);
+    <%
+        }
+    %>
+    <%
+   for(String value:consensus.get("MY3"))
+       {%>
+    MY3.push(<%=value%>);
+    <%
+        }
+    %>
+    <%
+   for(String value:consensus.get("DEG"))
+       {%>
+    DEG.push(<%=value%>);
+    <%
+        }
+    %>
+    <%
+       for(String value:consensus.get("BET"))
+           {%>
+    BET.push(<%=value%>);
+    <%
+        }
+    %>
+    <%
+   for(String value:consensus.get("RAND"))
+       {%>
+    RAND.push(<%=value%>);
+    <%
+        }
+    %>
 </script>
 <script type="text/javascript" src="analysis_style/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="analysis_style/js/layer/layer.min.js"></script>
