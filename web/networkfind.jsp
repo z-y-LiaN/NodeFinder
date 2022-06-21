@@ -109,10 +109,6 @@
                 <td>活跃节点数</td>
                 <td><%=Active_Node_Num.intValue()%></td>
             </tr>
-            <tr>
-                <td>总算力</td>
-                <td>xxx</td>
-            </tr>
             </tbody>
         </table>
         <div style="width: 100%;height:10px;">
@@ -120,16 +116,16 @@
                 <fieldset class="layui-elem-field layui-field-title">
                     <legend>时间戳设置</legend>
                 </fieldset>
-                <div class="layui-form-item">
-                    <input type="range" id="TimestampInput" name="TimestampInput" min="1650872880" max="1650876232" step="2"
-                           value="1650872880"
-                           oninput="document.getElementById('TimestampInput').innerHTML = this.value ;document.getElementById('TimestampShow').innerHTML = this.value " />
-                </div>
                 <%
                     String Timestamp=(String) session.getAttribute("Cur_Timestamp");
                     if(Timestamp==null)
                         Timestamp="1650872880";
                 %>
+                <div class="layui-form-item">
+                    <input type="range" id="TimestampInput" name="TimestampInput" min="1650872880" max="1650876232" step="2"
+                           value="<%=Timestamp%>"
+                           oninput="document.getElementById('TimestampInput').innerHTML = this.value ;document.getElementById('TimestampShow').innerHTML = this.value " />
+                </div>
                 <span id="TimestampShow"><%=Timestamp%></span>&nbsp;
                 <!-- <input type="submit" class="layui-btn layui-btn-normal" value="查询" /> -->
                 <div class="layui-btn-container" style="margin-left: 30%;margin-top: 10px;">
