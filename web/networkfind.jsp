@@ -1,3 +1,6 @@
+<%@ page import="java.util.Dictionary" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="service.EthereumService" %>
 <%@ page pageEncoding="utf-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-cn">
@@ -70,6 +73,20 @@
                 <col>
             </colgroup>
             <thead>
+            <%
+                Long Node_Num=(Long)session.getAttribute("Node_Num");
+                Long Conn_Num=(Long)session.getAttribute("Conn_Num");
+                Long Active_Node_Num=(Long)session.getAttribute("Active_Node_Num");
+                Long Route_Node_Num=(Long)session.getAttribute("Route_Node_Num");
+                if(Node_Num==null)
+                    Node_Num=Long.valueOf(0);
+                if(Conn_Num==null)
+                    Conn_Num=Long.valueOf(0);
+                if(Active_Node_Num==null)
+                    Active_Node_Num=Long.valueOf(0);
+                if(Route_Node_Num==null)
+                    Route_Node_Num=Long.valueOf(0);
+            %>
             <tr>
                 <th>数据</th>
                 <th>值</th>
@@ -78,37 +95,38 @@
             <tbody>
             <tr>
                 <td>节点数</td>
-                <td>xxx</td>
+                <td><%=Node_Num.intValue()%></td>
             </tr>
             <tr>
                 <td>连接数</td>
-                <td>xxx</td>
+                <td><%=Conn_Num.intValue()%></td>
             </tr>
             <tr>
                 <td>路由节点数</td>
-                <td>xxx</td>
+                <td><%=Route_Node_Num.intValue()%></td>
             </tr>
             <tr>
                 <td>活跃节点数</td>
-                <td>xxx</td>
-            </tr>
-            <tr>
-                <td>总算力</td>
-                <td>xxx</td>
+                <td><%=Active_Node_Num.intValue()%></td>
             </tr>
             </tbody>
         </table>
         <div style="width: 100%;height:10px;">
-            <form class="layui-form" action="QueryByPingtimeController" method="post">
+            <form class="layui-form" action="QueryByTimestampController" method="post">
                 <fieldset class="layui-elem-field layui-field-title">
                     <legend>时间戳设置</legend>
                 </fieldset>
+                <%
+                    String Timestamp=(String) session.getAttribute("Cur_Timestamp");
+                    if(Timestamp==null)
+                        Timestamp="1650872880";
+                %>
                 <div class="layui-form-item">
-                    <input type="range" id="pingtimeInput" name="pingtimeInput" min="0" max="1650872880" step="2"
-                           value="1650872880"
-                           oninput="document.getElementById('pingtimeInput').innerHTML = this.value ;document.getElementById('pingtimeShow').innerHTML = this.value " />
+                    <input type="range" id="TimestampInput" name="TimestampInput" min="1650872880" max="1650876232" step="2"
+                           value="<%=Timestamp%>"
+                           oninput="document.getElementById('TimestampInput').innerHTML = this.value ;document.getElementById('TimestampShow').innerHTML = this.value " />
                 </div>
-                <span id="pingtimeShow">1650872880</span>&nbsp;
+                <span id="TimestampShow"><%=Timestamp%></span>&nbsp;
                 <!-- <input type="submit" class="layui-btn layui-btn-normal" value="查询" /> -->
                 <div class="layui-btn-container" style="margin-left: 30%;margin-top: 10px;">
                     <button type="submit" class="layui-btn layui-btn-normal">开始探测</button>
@@ -154,7 +172,7 @@
         },
         visualMap: {
             min: 0,
-            max: 1000000,
+            max: 2000,
             text: ['High', 'Low'],
             realtime: false,
             calculable: true,
@@ -170,6 +188,16 @@
                     emphasis: { label: { show: true } }
                 },
                 data: [
+                    <%
+                        Dictionary<String, Integer>dict=(Dictionary<String, Integer>)session.getAttribute("ip_dict");
+                        if(dict!=null){
+                         Enumeration<String> keys = dict.keys();
+                         while (keys.hasMoreElements()) {
+                             String key = keys.nextElement();
+                             System.out.println(key+"  "+dict.get(key));%>
+                    {name: '<%=key%>', value: <%=dict.get(key)%>},
+                    <%}}%>
+                    <%/*
                     { name: 'Afghanistan', value: 28397.812 },
                     { name: 'Angola', value: 19549.124 },
                     { name: 'Albania', value: 3150.143 },
@@ -346,7 +374,8 @@
                     { name: 'Yemen', value: 22763.008 },
                     { name: 'South Africa', value: 51452.352 },
                     { name: 'Zambia', value: 13216.985 },
-                    { name: 'Zimbabwe', value: 13076.978 }
+                    { name: 'Zimbabwe', value: 13076.978 }*/
+        %>
                 ]
             }
         ]

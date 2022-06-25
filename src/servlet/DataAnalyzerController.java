@@ -1,0 +1,138 @@
+package servlet;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.maxmind.geoip2.exception.GeoIp2Exception;
+import entity.Node;
+import jdk.nashorn.internal.ir.Block;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import service.EthereumService;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.*;
+import java.net.InetAddress;
+import java.text.DecimalFormat;
+import java.util.*;
+import com.maxmind.geoip2.DatabaseReader;
+import com.maxmind.geoip2.model.CityResponse;
+import com.maxmind.geoip2.record.City;
+import com.maxmind.geoip2.record.Country;
+import com.maxmind.geoip2.record.Location;
+import com.maxmind.geoip2.record.Subdivision;
+@WebServlet(name = "DataAnalyzerController",urlPatterns = "/DataAnalyzerController")
+public class DataAnalyzerController extends HttpServlet {
+    public static JSONObject readJsonFile(String file_name){
+        try{
+            File file = new File(file_name);
+            FileReader fileReader = new FileReader(file);
+            Reader reader = new InputStreamReader(new FileInputStream(file), "Utf-8");
+            int ch = 0;
+            StringBuffer sb = new StringBuffer();
+            while ((ch = reader.read()) != -1) {
+                sb.append((char) ch);
+            }
+            fileReader.close();
+            reader.close();
+            String jsonStr = sb.toString();
+            System.out.println(JSON.parseObject(jsonStr));
+            return JSON.parseObject(jsonStr);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        response.setContentType("text/html");
+        doPost(request,response);
+
+    }
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=utf-8");
+        List<String>data_list=new ArrayList<String>();
+        List<String>type_list=new ArrayList<String>();
+        List<String>degree_list=new ArrayList<String>();
+        List<String>bin_list=new ArrayList<String>();
+        DecimalFormat df = new DecimalFormat("#.000");
+        JSONObject raw_data=readJsonFile("D:\\ethereum\\NodeFinder\\OUT_DATA_RAW.json");
+        Map<String, Object> map =raw_data;
+        for(String key:map.keySet())
+        {
+            String str=df.format(Double.valueOf(map.get(key).toString())).toString();
+            map.put(key,str);
+        }
+        String []node_type={"BET","DEG","MY1","MY2","MY3","RAND"};
+        String []value={"1","2","3","5"};
+        HashMap<String, List<String>> consensus=new HashMap<String, List<String>>();
+        for (String type:node_type)
+        {
+            List<String>times=new ArrayList<String>();
+            for (String rate:value)
+            {
+                JSONObject jobj=readJsonFile("D:\\ethereum\\NodeFinder\\OUT_DATA_"+type+"_"+rate+".json");
+                times.add(df.format(Double.valueOf(jobj.get("平均共识达成时间").toString())));
+                System.out.println(jobj.get("平均共识达成时间").toString());
+            }
+            consensus.put(type,times);
+        }
+        Process proc;
+        try {
+            //String[] args = new String[] {  };
+            proc = Runtime.getRuntime().exec("py D:\\ethereum\\NodeFinder\\data_analyzer.py");// 执行py文件
+            //用输入输出流来截取结果
+            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            String line = null;
+            int count=0;
+            while(count<=14) {
+                line=in.readLine();
+                count++;
+                    String[]buff=line.split(":");
+                    System.out.println(buff[0]);
+                    System.out.println(buff[1]);
+                    type_list.add(buff[0]);
+                    data_list.add(buff[1]);
+            }
+            line=in.readLine();
+            String[]buff=line.split(" ");
+            for(String str:buff)
+            {
+                System.out.println(str);
+                degree_list.add(str);
+            }
+            line=in.readLine();
+            buff=line.split(" ");
+            for(String str:buff)
+            {
+                System.out.println(str);
+                bin_list.add(str);
+            }
+            in.close();
+            proc.waitFor();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        HttpSession session= request.getSession();
+
+        //session.setAttribute("nodequery",nodequery);
+        session.setAttribute("consensus",consensus);
+        System.out.println(degree_list);
+        session.setAttribute("degree_list",degree_list);
+        session.setAttribute("bin_list",bin_list);
+        session.setAttribute("data_list",data_list);
+        session.setAttribute("type_list",type_list);
+        session.setAttribute("raw_data",map);
+        request.getRequestDispatcher("analysis.jsp").forward(request, response);
+        PrintWriter out = response.getWriter();
+    }
+}

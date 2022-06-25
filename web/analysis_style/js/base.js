@@ -57,7 +57,7 @@ option = {
                 type: 'solid'
             }
         },
-        data: [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+        data: [1, 2, 3, 5]
     },
     yAxis: {
         type: 'value',
@@ -91,32 +91,32 @@ option = {
         {
             name: '活跃度算法',
             type: 'line',
-            data: [120, 132, 101, 134, 90, 230, 210]
+            data: MY1
         },
         {
             name: '度中心法',
             type: 'line',
-            data: [220, 182, 191, 234, 290, 330, 310]
+            data: DEG
         },
         {
             name: '聚集系数算法',
             type: 'line',
-            data: [150, 232, 201, 154, 190, 330, 410]
+            data: MY2
         },
         {
             name: '活跃度-聚集系数算法',
             type: 'line',
-            data: [120, 244, 321, 174, 390, 230, 310]
+            data: MY3
         },
         {
             name: '随机算法',
             type: 'line',
-            data: [123, 144, 221, 174, 240, 230, 320]
+            data: RAND
         },
         {
             name: '介数中心性算法',
             type: 'line',
-            data: [125, 149, 121, 284, 260, 290, 301]
+            data: BET
         }
 
     ]
@@ -168,7 +168,7 @@ option = {
                     type: 'solid'
                 }
             },
-            data: [10, 30, 50, 70, 90],
+            data: bin,
         }
     ],
     yAxis: [
@@ -203,7 +203,7 @@ option = {
             name: '度数分布',
             type: 'bar',
             barWidth: '100%',
-            data: [10, 52, 200, 334, 390],
+            data: degree,
             
         }
     ]

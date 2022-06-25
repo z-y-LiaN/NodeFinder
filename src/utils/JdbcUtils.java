@@ -14,10 +14,9 @@ public class JdbcUtils {
         try {
 
 
-            String jndi = "java:comp/env/jdbc/nodefinder";
+            String jndi = "java:comp/env/jdbc/nodefinder_db";
             Context cxt = (Context) new InitialContext();
             ds = (DataSource) cxt.lookup(jndi);
-
         } catch (NamingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
