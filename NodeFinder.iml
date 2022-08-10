@@ -43,5 +43,15 @@
     </orderEntry>
     <orderEntry type="library" name="Maven: com.maxmind.geoip2:geoip2:2.13.0" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.47" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../apache-tomcat-8.5.70/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../../apache-tomcat-8.5.70/lib" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>

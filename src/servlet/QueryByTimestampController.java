@@ -41,7 +41,7 @@ public class QueryByTimestampController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
         String Timestamp=request.getParameter("TimestampInput");
-
+        String source_path=getServletContext ().getRealPath("/")+"\\data\\";
         Dictionary<String, Integer> dict = new Hashtable<>();
         List<Node> nodequery= EthereumService.queryNodeByTimestamp(Timestamp);
         Long Node_Num=Long.valueOf(nodequery.size());
@@ -51,7 +51,7 @@ public class QueryByTimestampController extends HttpServlet {
         for (Node node:nodequery
              ) {
             // GeoIP2-City 数据库文件mmdb
-            File database = new File("D:\\ethereum\\NodeFinder\\GeoLite2-City.mmdb");
+            File database = new File(source_path+"GeoLite2-City.mmdb");
 
             // 创建 DatabaseReader对象
             DatabaseReader reader = new DatabaseReader.Builder(database).build();
