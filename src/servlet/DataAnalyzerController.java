@@ -63,7 +63,8 @@ public class DataAnalyzerController extends HttpServlet {
         List<String>degree_list=new ArrayList<String>();
         List<String>bin_list=new ArrayList<String>();
         DecimalFormat df = new DecimalFormat("#.000");
-        JSONObject raw_data=readJsonFile("D:\\ethereum\\NodeFinder\\OUT_DATA_RAW.json");
+        String source_path=getServletContext ().getRealPath("/")+"\\data\\";
+        JSONObject raw_data=readJsonFile( source_path+"OUT_DATA_RAW.json");
         Map<String, Object> map =raw_data;
         for(String key:map.keySet())
         {
@@ -73,27 +74,37 @@ public class DataAnalyzerController extends HttpServlet {
         String []node_type={"BET","DEG","MY1","MY2","MY3","RAND"};
         String []value={"1","2","3","5"};
         HashMap<String, List<String>> consensus=new HashMap<String, List<String>>();
+        //枚举需处理的文件类型输出其平均共识达成时间  该部分代码待修改
+        /**
+         * 所需的修改：       (OUT_DATA_(...).json 这种json文件传参的方式已经被抛弃)
+         * 根据simulator/src/dist/conf/data/(可变部分).json的文件名
+         * 传入simblock-pro.jar文件 运行
+         * 保存其输出的平均共识达成时间
+         */
         for (String type:node_type)
         {
             List<String>times=new ArrayList<String>();
             for (String rate:value)
             {
-                JSONObject jobj=readJsonFile("D:\\ethereum\\NodeFinder\\OUT_DATA_"+type+"_"+rate+".json");
+                JSONObject jobj=readJsonFile(source_path+"OUT_DATA_"+type+"_"+rate+".json");
                 times.add(df.format(Double.valueOf(jobj.get("平均共识达成时间").toString())));
                 System.out.println(jobj.get("平均共识达成时间").toString());
             }
             consensus.put(type,times);
         }
+
         Process proc;
         try {
             //String[] args = new String[] {  };
-            proc = Runtime.getRuntime().exec("py D:\\ethereum\\NodeFinder\\data_analyzer.py");// 执行py文件
+            proc = Runtime.getRuntime().exec("py "+source_path+"data_analyzer.py");// 执行py文件
+            System.out.println("py "+source_path+"data_analyzer.py");
             //用输入输出流来截取结果
             BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line = null;
             int count=0;
             while(count<=14) {
                 line=in.readLine();
+                System.out.println(line);
                 count++;
                     String[]buff=line.split(":");
                     System.out.println(buff[0]);

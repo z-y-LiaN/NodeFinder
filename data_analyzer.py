@@ -4,11 +4,13 @@
 # 按 双击 Shift 在所有地方搜索类、文件、工具窗口、操作和设置。
 import random
 import math
-import pymysql
+
 import numpy
+import pymysql
 import networkx as nx
 import aiomysql
 import asyncio
+import networkx as nx
 import matplotlib.pyplot as plt
 # 按间距中的绿色按钮以运行脚本。
 import sha3
@@ -68,10 +70,10 @@ def distinct(G):
 def net_analyzer(G,isdistinct=1):
     Degrees=nx.degree(G)
     nodes=nx.nodes(G)
-    print("节点总数:"+len(nx.nodes(G)).__str__())
+    print("节点总数: "+len(nx.nodes(G)).__str__())
     if isdistinct:
         G.remove_nodes_from(list(nx.isolates(G)))
-        print("节点总数（去除孤点）:" + len(nodes).__str__())
+        print("节点总数（去除孤点）: " + len(nodes).__str__())
         C = sorted(nx.connected_components(G), key=len, reverse=True)
         len_list=list()
         for i in C:
@@ -84,14 +86,14 @@ def net_analyzer(G,isdistinct=1):
         sum+=i[1]
         if(i[1]>4):
             degrees.append(i[1])
-    print("平均度:"+round(sum/len(nodes),3).__str__())
+    print("平均度 "+(sum/len(nodes)).__str__())
     nx.degree_centrality(G)
-    print("平均最短路径长度:"+round(nx.average_shortest_path_length(G),3).__str__())
+    print("平均最短路径长度: "+nx.average_shortest_path_length(G).__str__())
     #print("degree_centrality: "+nx.degree_centrality(G).__str__())
-    print("平均聚集系数:"+round(nx.average_clustering(G),3).__str__())
+    print("平均聚集系数: "+nx.average_clustering(G).__str__())
    # print("average_neighbor_degree: "+nx.average_neighbor_degree(G).__str__())
-    print("网络直径:" + nx.diameter(G).__str__())
-    print("度数大于4的节点数:"+len(degrees).__str__())
+    print("网络直径: " + nx.diameter(G).__str__())
+    print("度数大于4的节点数: "+len(degrees).__str__())
    # print(' '.join('%s' %each for each in degrees))
 
 def keccak256(s):
@@ -332,8 +334,8 @@ def getdata3(db):
             print(i)
     return lenip,lenid,id2ips,ip2ids
 if __name__ == '__main__':
-    dbconfig = {'sourcetable': 'ethereum', 'database': 'topo_p2p9', 'databaseip': 'localhost',
-                'databaseport': 3306, 'databaseuser': 'root', 'databasepassword': 'hggforget'}
+    dbconfig = {'sourcetable': 'ethereum', 'database': 'nodefinder_db', 'databaseip': 'localhost',
+                'databaseport': 3306, 'databaseuser': 'root', 'databasepassword': '123456'}
     db=Db(dbconfig)
     db.connect()
     lenip,lenid,id2ips,ip2ids=getdata3(db)
@@ -342,15 +344,13 @@ if __name__ == '__main__':
     print("探测到的IP地址:"+db.execute("SELECT COUNT(DISTINCT ip) FROM ethereum")[0][0].__str__())
     print("运行多个节点的IP地址:"+lenid.__str__() )
     active = db.execute("SELECT DISTINCT nodeid FROM ethereum_active_nodes")
-
-
+    print("活跃节点总数:"+len(active).__str__())
     nodes=set()
     for i in active:
         nodes.add(i[0])
     #print("探测到的所有节点（从路由表中探测到的节点+被PING时增加的节点）: "+db.execute("SELECT COUNT(DISTINCT nodeid) FROM ethereum")[0][0].__str__())
     route_node = db.execute("SELECT DISTINCT nodeid1  FROM ethereum_neighbours")
-    print("有路由表的节点:"+len(route_node).__str__())
-    print("活跃节点总数:"+len(active).__str__())
+    #print("有路由表的节点: "+len(route_node).__str__())
     route=set()
     for i in route_node:
         route.add(i[0])
@@ -437,13 +437,20 @@ if __name__ == '__main__':
         #print(bucket)
         #print(i[0])
         #print(len(nodes))
-    print("平均路由表大小:"+round(len(conns) / len(route_node),3).__str__())
+    print("平均路由表大小: " + round(len(conns) / len(route_node),3).__str__())
+
+    print("平均路由表大小: "+(len(conns) / len(route_node)).__str__())
     n, bins,patchs=plt.hist(num, bins=5)
     for i in range(0,len(n)):
         print(numpy.int(n[i]),end=" ")
     print("")
     for i in range(1,len(bins)):
-        print(round(numpy.float(bins[i]),1),end=" ")
+        print(numpy.float(bins[i]),end=" ")
     print("")
+    plt.xlabel("connections")
+    plt.ylabel("nodes")
+    plt.title("nodes in routing table distribution")
+    plt.show()
+
 
     db.close()
