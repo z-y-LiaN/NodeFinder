@@ -10,114 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70118594-dd79-4c0b-9b8f-fd9f036b5ee0" name="Changes" comment="填入参数">
-      <change afterPath="$PROJECT_DIR$/simblock-pro.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/block/Block.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/block/Coinage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/block/ProofOfWorkBlock.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/block/SamplePoSBlock.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/node/Node.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/node/consensus/AbstractConsensusAlgo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/node/consensus/ProofOfWork.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/node/consensus/SampleProofOfStake.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/node/routing/AbstractRoutingTable.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/node/routing/BitcoinCoreTable.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/settings/NetworkConfiguration.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/settings/SimulationConfiguration.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/simulator/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/simulator/Network.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/simulator/Simulator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/simulator/Timer$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/simulator/Timer$ScheduledTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/simulator/Timer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/task/AbstractMessageTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/task/AbstractMintingTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/task/BlockMessageTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/task/CmpctBlockMessageTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/task/GetBlockTxnMessageTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/task/InvMessageTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/task/MiningTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/task/RecMessageTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/task/SampleStakingTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/build/classes/java/main/simblock/task/Task.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/simulator.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_BETWEENNESS_1%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_BETWEENNESS_2%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_BETWEENNESS_3%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_BETWEENNESS_5%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_DEGREE_1%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_DEGREE_2%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_DEGREE_3%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_DEGREE_5%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY1_1%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY1_2%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY1_3%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY1_5%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY2_1%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY2_2%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY2_3%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY2_5%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY3_1%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY3_2%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY3_3%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_MY3_5%.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/init_data_row.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/data/nodeid_r.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/scenario.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/conf/simulator.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/output/OUT_DATA_RAW.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/output/blockList.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/output/graph/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/output/graph/100.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/output/graph/2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/output/nodeid_r.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/output/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/dist/output/static.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/block/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/block/Coinage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/block/ProofOfWorkBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/block/SamplePoSBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/node/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/node/consensus/AbstractConsensusAlgo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/node/consensus/ProofOfWork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/node/consensus/SampleProofOfStake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/node/routing/AbstractRoutingTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/node/routing/BitcoinCoreTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/settings/NetworkConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/settings/SimulationConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/simulator/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/simulator/Network.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/simulator/Simulator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/simulator/Timer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/task/AbstractMessageTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/task/AbstractMintingTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/task/BlockMessageTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/task/CmpctBlockMessageTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/task/GetBlockTxnMessageTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/task/InvMessageTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/task/MiningTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/task/RecMessageTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/task/SampleStakingTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator/src/main/java/simblock/task/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/gradle_wrapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dao/NodeFinderDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/Parameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/NodeFinderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servlet/NodeFinderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/add.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/maven_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/maven_war.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/maven_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/maven_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2022_6_18_16_47___Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2022_6_18_16_47_取消提交了变更_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NodeFinder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NodeFinder.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ask4region.py" beforeDir="false" afterPath="$PROJECT_DIR$/ask4region.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maven/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/maven/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlet/DataAnalyzerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/DataAnalyzerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlet/QueryByTimestampController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/QueryByTimestampController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlet/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/META-INF/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/META-INF/context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/welcome_setting.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/welcome_setting.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,8 +84,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../simblock-pro/out/artifacts/runjar/simblock-pro.jar" />
-    <property name="project.structure.last.edited" value="全局库" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
+    <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
@@ -189,6 +95,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\NodeFinder\web" />
       <recent name="D:\IdeaProjects\NodeFinder\web\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\NodeFinder\web\css" />
     </key>
   </component>
   <component name="RunManager" selected="应用程序.test">
@@ -344,6 +253,7 @@
       <workItem from="1660048638004" duration="112000" />
       <workItem from="1660053953627" duration="2003000" />
       <workItem from="1660125365384" duration="742000" />
+      <workItem from="1660182147305" duration="6917000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1654949162578</created>
@@ -389,7 +299,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
