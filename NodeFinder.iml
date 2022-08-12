@@ -33,5 +33,14 @@
         <jarDirectory url="file://$MODULE_DIR$/../../apache-tomcat-8.5.70/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../Java/apache-tomcat-8.5.51/lib/tomcat-coyote.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
