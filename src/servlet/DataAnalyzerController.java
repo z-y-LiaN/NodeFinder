@@ -25,6 +25,7 @@ import com.maxmind.geoip2.record.Location;
 import com.maxmind.geoip2.record.Subdivision;
 @WebServlet(name = "DataAnalyzerController",urlPatterns = "/DataAnalyzerController")
 public class DataAnalyzerController extends HttpServlet {
+
     public static JSONObject readJsonFile(String file_name){
         try{
             File file = new File(file_name);

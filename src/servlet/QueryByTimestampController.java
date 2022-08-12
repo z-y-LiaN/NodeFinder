@@ -12,10 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.InetAddress;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.model.CityResponse;
@@ -92,6 +89,9 @@ public class QueryByTimestampController extends HttpServlet {
             System.out.println(key+"  "+dict.get(key));
         }
         */
+        /**
+         * 某运行py文件的老旧方法（已弃用）
+         */
         /*
         for (Node node:nodequery
              ) {
