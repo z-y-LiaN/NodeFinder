@@ -26,44 +26,45 @@
                 <table>
                     <tr>
                         <td> 本次探测的数据库名：</td>
-                        <td><input  type = "text" > </td>
+                        <td><input  name="dbname" type = "text" > </td>
                     </tr>
                     <tr>
                         <td> 本次探测的数据库账号：</td>
-                        <td><input  type = "text" > </td>
+                        <td><input  name="dbaccount"  type = "text" > </td>
                     </tr>
                     <tr>
                         <td> 本次探测的数据库密码：</td>
-                        <td><input  type = "password" ></td>
+                        <td><input  name="dbpassword" type = "password" ></td>
                     </tr>
                     <tr>
                         <td> 本次探测名字：</td>
-                        <td><input  type = "text" > </td>
+                        <td><input  name="nodefindername" type = "text" > </td>
                     </tr>
                     <tr>
                         <td> 探测开始时间：</td>
-                        <td><input type="date" name="date"/></td>
+                        <td><input  name="begintime" type="date" /></td>
                     </tr>
                     <tr>
                         <td> 快照周期（/分钟）：</td>
-                        <td><input  type = "text" > </td>
+                        <td><input  name="cycle" type = "text" > </td>
                     </tr>
+                    <%--
+                    未命名
+--%>
                     <tr>
                         <td> 模式：</td>
-                        <td>  <select>
-                            <option>1998</option>
-                            <option>1999</option>
-                            <option>2000</option>
-                            <option>2001</option>
+                        <td>  <select name="model">
+                            <option value="1">探测网络</option>
+                            <option value="2">维持视野</option>
                         </select></td>
                     </tr>
                     <tr>
                         <td> 循环次数（/次）：</td>
-                        <td><input  type = "text" > </td>
+                        <td><input  name="cycleindex" type = "text" > </td>
                     </tr>
                     <tr>
                         <td> 探测间隔（/分钟）：</td>
-                        <td><input  type = "text" > </td>
+                        <td><input  name="interval" type = "text" > </td>
                     </tr>
 
 

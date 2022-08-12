@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/web/analysis.jsp" value="file://$PROJECT_DIR$/web" />
         <entry key="file://$PROJECT_DIR$/web/networkfind.jsp" value="file://$PROJECT_DIR$/web" />
+        <entry key="file://$PROJECT_DIR$/web/welcome_setting.jsp" value="file://$PROJECT_DIR$/web" />
       </map>
     </option>
   </component>

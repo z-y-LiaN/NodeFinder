@@ -39,18 +39,20 @@ public class test {
         System.out.println("dead");
     }
     public static void main(String[] args) {
-        /*
+    /*
         String Timestamp="1650872900";
         List<String>Nodes=EthereumDAO.queryDistinctConnectedNodeByTimestamp(Timestamp);
         System.out.println(Nodes);
-        */
+
+
+     */
+
         long now_time=System.currentTimeMillis();
         System.out.println(now_time);
 
 
-        String config[]={"py","D:\\IdeaProjects\\NodeFinder\\ethereum_P2Pnetwork_Probe\\main.py"};
+        String config[]={"java","-jar","simblock-pro.jar","false","MY3","1"};
         Exec_program(config);
-
 
     }
 

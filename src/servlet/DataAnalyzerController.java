@@ -64,14 +64,33 @@ public class DataAnalyzerController extends HttpServlet {
         List<String>degree_list=new ArrayList<String>();
         List<String>bin_list=new ArrayList<String>();
         DecimalFormat df = new DecimalFormat("#.000");
-        String source_path=getServletContext ().getRealPath("/")+"\\data\\";
-        JSONObject raw_data=readJsonFile( source_path+"OUT_DATA_RAW.json");
-        Map<String, Object> map =raw_data;
-        for(String key:map.keySet())
-        {
-            String str=df.format(Double.valueOf(map.get(key).toString())).toString();
-            map.put(key,str);
+        String source_path="D:\\IdeaProjects\\NodeFinder\\simulator\\src\\dist\\output\\";
+        ProcessBuilder pbGet_RAW = new ProcessBuilder();
+        pbGet_RAW.redirectErrorStream(true);
+        pbGet_RAW.directory(new File("D:\\IdeaProjects\\NodeFinder"));
+        pbGet_RAW.command("java","-Dfile.encoding=UTF-8","-jar","simblock-pro.jar","false","RAW","1");
+        Map<String, Object> map=new HashMap<>();
+        try {
+            Process process_RAW = pbGet_RAW.start();
+            try {
+                int exitcode=process_RAW.waitFor();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            JSONObject raw_data=readJsonFile( source_path+"OUT_DATA_RAW_1.json");
+             map=raw_data;
+            for(String key:map.keySet())
+            {
+                String str=df.format(Double.valueOf(map.get(key).toString())).toString();
+                map.put(key,str);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        System.out.println("dead");
+
         String []node_type={"BET","DEG","MY1","MY2","MY3","RAND"};
         String []value={"1","2","3","5"};
         HashMap<String, List<String>> consensus=new HashMap<String, List<String>>();
@@ -87,9 +106,27 @@ public class DataAnalyzerController extends HttpServlet {
             List<String>times=new ArrayList<String>();
             for (String rate:value)
             {
-                JSONObject jobj=readJsonFile(source_path+"OUT_DATA_"+type+"_"+rate+".json");
-                times.add(df.format(Double.valueOf(jobj.get("平均共识达成时间").toString())));
-                System.out.println(jobj.get("平均共识达成时间").toString());
+
+
+                ProcessBuilder pbGet = new ProcessBuilder();
+                pbGet.redirectErrorStream(true);
+                pbGet.directory(new File("D:\\IdeaProjects\\NodeFinder"));
+                pbGet.command("java","-Dfile.encoding=UTF-8","-jar","simblock-pro.jar","false",type,rate);
+                try {
+                    Process process = pbGet.start();
+                    try {
+                        int exitcode=process.waitFor();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    JSONObject jobj=readJsonFile(source_path+"OUT_DATA_"+type+"_"+rate+".json");
+                    times.add(df.format(Double.valueOf(jobj.get("平均共识达成时间").toString())));
+                    System.out.println(jobj.get("平均共识达成时间").toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println("dead");
             }
             consensus.put(type,times);
         }
@@ -97,8 +134,11 @@ public class DataAnalyzerController extends HttpServlet {
         Process proc;
         try {
             //String[] args = new String[] {  };
-            proc = Runtime.getRuntime().exec("py "+source_path+"data_analyzer.py");// 执行py文件
-            System.out.println("py "+source_path+"data_analyzer.py");
+            ProcessBuilder pbGet_anl = new ProcessBuilder();
+            pbGet_anl.directory(new File("D:\\IdeaProjects\\NodeFinder\\ethereum_P2Pnetwork_Probe"));
+            pbGet_anl.command("py","data_analyzer.py");
+            System.out.println("py "+"data_analyzer.py");
+            proc=pbGet_anl.start();
             //用输入输出流来截取结果
             BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line = null;

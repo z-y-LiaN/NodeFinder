@@ -154,7 +154,7 @@ public class Simulator {
   public static void printPropagation(Block block, LinkedHashMap<Integer, Long> propagation) {
     // Print block and its height
     //TODO block does not have a toString method, what is printed here
-    System.out.println(block + ":" + block.getHeight());
+    //System.out.println(block + ":" + block.getHeight());
     blockgenSum=block.getTime();
     long ret=0;
     int count=0;
@@ -176,9 +176,9 @@ public class Simulator {
 //    System.out.println("last time "+tail.getValue());
 //    System.out.println("total nodes = "+propagation.size());
 //    System.out.println("该区块的平均传输时间 "+tail.getValue()/propagation.size()+" ms");
-    System.out.println("该区块的平均传输时间 "+total_propagation_time/propagation.size()+" s");
+//    System.out.println("该区块的平均传输时间 "+total_propagation_time/propagation.size()+" s");
     averageSum += total_propagation_time/propagation.size();
-    System.out.println();
+//    System.out.println();
   }
   /**
    * Print propagation information about all blocks, internally relying on
@@ -194,9 +194,9 @@ public class Simulator {
      *  出块时间 ： 该块产生所用的时间 ， 该区块产生的时间 减去 前一区块产生的时间
      */
 
-    System.out.println("平均共识达成时间 ："+transmitSum/(END_BLOCK_HEIGHT+1)+"  ms");
-    System.out.println("平均块传播时间 ："+averageSum/(END_BLOCK_HEIGHT+1)+ " s");
-    System.out.println("平均出块时间 ："+blockgenSum/(END_BLOCK_HEIGHT+1)+ " ms");
+    System.out.println("平均共识达成时间 ："+transmitSum/(END_BLOCK_HEIGHT+1));
+    System.out.println("平均块传播时间 ："+averageSum/(END_BLOCK_HEIGHT+1));
+    System.out.println("平均出块时间 ："+blockgenSum/(END_BLOCK_HEIGHT+1));
     OUT_DATA_FILE.println("{");
     OUT_DATA_FILE.println("\"平均共识达成时间\":"+transmitSum/(END_BLOCK_HEIGHT+1));
     OUT_DATA_FILE.println(',');
