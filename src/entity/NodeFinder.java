@@ -34,7 +34,6 @@ public class NodeFinder {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(process.isAlive());
     }
 
     /**
@@ -63,24 +62,29 @@ public class NodeFinder {
         List<String>lines=new ArrayList<String>();
         long now_time=System.currentTimeMillis();
         System.out.println(now_time);
-        long target_time=now_time+60*1000;
+        long target_time=now_time+10*1000;
         try {
             inReader = new InputStreamReader(process.getInputStream(), "GBK");
             BufferedReader br = new BufferedReader(inReader);
             String line;
-            while (process.isAlive())
-            {
-                while (br.ready()){
-                    line= br.readLine();
-                    lines.add(line);
-                    if(System.currentTimeMillis()>=target_time)
-                        return lines;
+                while(process.isAlive()&&System.currentTimeMillis()<target_time)
+                {
+                    while (br.ready())
+                    {
+                        line= br.readLine();
+                        lines.add(line);
+                        System.out.println(line);
+                    }
                 }
-            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("done");
         return lines;
+    }
+
+    public Process getProcess() {
+        return process;
     }
 }

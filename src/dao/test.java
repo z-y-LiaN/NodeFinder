@@ -1,16 +1,14 @@
 package dao;
 import dao.EthereumDAO;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class test {
     public static void Exec_program(String command[]) {
         ProcessBuilder pbGet = new ProcessBuilder(command);
+        pbGet.redirectErrorStream(true);
         pbGet.directory(new File("D:\\IdeaProjects\\NodeFinder"));
         /**
          * 上述代码创建了一个进程执行我们指定的程序
@@ -21,11 +19,12 @@ public class test {
          */
         try {
             Process process = pbGet.start();
-            InputStreamReader inReader = new InputStreamReader(process.getInputStream(), "GBK");
-            BufferedReader br = new BufferedReader(inReader);
+            InputStreamReader inReader ;
             String line;
             while (process.isAlive())
             {
+                inReader = new InputStreamReader(process.getInputStream(), "GBK");
+                BufferedReader br = new BufferedReader(inReader);
                 while (br.ready()) {
                     line= br.readLine();
                     System.out.println(line);
@@ -46,16 +45,31 @@ public class test {
 
 
      */
-
+/*
         long now_time=System.currentTimeMillis();
         System.out.println(now_time);
 
 
-        String config[]={"java","-jar","simblock-pro.jar","false","MY3","1"};
+        String config[]={"py","ethereum_P2Pnetwork_Probe/main.py"};
         Exec_program(config);
 
-    }
+
+ */
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream("data.txt");
+            InputStreamReader isr = null;
+            isr = new InputStreamReader(fis, "UTF-8");
+            BufferedReader br = new BufferedReader(isr);
+            String line = null;
+            while (true) {
+                if (!((line = br.readLine()) != null)) break;
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
 
-}
+    }}
 //py ethereum_P2Pnetwork_Probe/main.py

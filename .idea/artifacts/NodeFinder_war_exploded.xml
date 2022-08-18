@@ -51,6 +51,36 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.1" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.1" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.47" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/el-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/jasper.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/jsp-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/catalina.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/ecj-4.6.3.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/jasper-el.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/jaspic-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-jni.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/catalina-ha.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/servlet-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-dbcp.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-jdbc.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-util.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/catalina-ant.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-coyote.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/websocket-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-i18n-de.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-i18n-es.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-i18n-fr.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-i18n-ja.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-i18n-ko.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-i18n-ru.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/annotations-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/catalina-tribes.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-util-scan.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-websocket.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/tomcat-i18n-zh-CN.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/catalina-storeconfig.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../apache-tomcat-8.5.70/lib/mysql-connector-java-8.0.29.jar" />
         </element>
       </element>
     </root>

@@ -1,6 +1,6 @@
 <%@ page import="java.util.Dictionary" %>
 <%@ page import="java.util.Enumeration" %>
-<%@ page import="service.EthereumService" %>
+
 <%@ page pageEncoding="utf-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-cn">
@@ -43,6 +43,46 @@
         border-radius: 0 0 5px 5px;
         transform: translateY(-5px);
     }
+    
+    <!--输出框样式-->
+	.bottom{
+		width: 60%;
+		height: 100%;
+		background: whitesmoke; 
+		margin: 20px auto;
+		overflow: hidden;
+	}
+	.bottom .out{
+		width: 100%;
+		height: 40px;
+		margin: 20px auto;
+		/*background: black;*/
+		/*border-bottom: 2px solid #99cccc;*/
+	}
+	.bottom .out p{
+		width: 80px;
+		height: 40px;
+		background: #99cccc;
+		border-radius: 5px;
+		color: white;
+		font-size: 16px;
+		text-align: center;
+		line-height: 40px;
+	}
+	.bottom .message{
+		width: 100%;
+		height: 40%;
+		margin: 20px 10px;
+		border: 2px solid #99cccc;
+		background: white;
+		overflow: auto;
+		
+	}
+	li{
+		list-style: none;
+		padding: 2px;
+	}
+
     /* #pingtimeInput {
 
         width: 100%;
@@ -58,6 +98,7 @@
         -webkit-appearance: none !important;
 
     } */
+
 </style>
 
 <body>
@@ -142,6 +183,20 @@
     </div>
 
 </div>
+<div class="bottom" style="width: 60%" >
+   	<div class="out">
+       <button onclick="getApi()"><p>输出</p></button>
+    </div>
+	<div class="message" id="to_insert">
+		<ul>
+
+		</ul>
+	</div>
+   </div>
+
+
+
+
 
 
 
@@ -159,6 +214,47 @@
 <%--%> -->--%>
 
 
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script>
+    //假设每隔5秒发送一次请求
+    //import {forEach} from "../ethereum_P2Pnetwork_Probe/docs";
+    function checkstatus() {
+        var feedback="<%=(String)session.getAttribute("Feedback")%>";
+        alert(feedback);
+    }
+    window.onload = function () {
+        checkstatus();
+        getApi();
+    }
+    function getApi() {
+        //设置时间 5-秒  1000-毫秒  这里设置你自己想要的时间
+        setTimeout(getApi,10*1000);
+        $.ajax({
+            url: "${pageContext.request.contextPath}/ReadLogController",
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                //方法中传入的参数data为后台获取的数据
+                for(var i=0;i<data.log.length;i++)
+                {
+                    console.log(data.log[i]);
+                    addLi(data.log[i]);
+                }
+            },
+            error:function (err)
+            {
+                alert("fail");
+            }
+
+        })
+        function addLi(log){
+            var ul = document.getElementById("to_insert");
+                var newLi = document.createElement("li");
+                newLi.innerHTML = log;
+                ul.append(newLi);
+        }
+    }
+</script>
 <script src="js/echarts.min.js"></script>
 <script src="js/world.js"></script>
 <script src="./layui/layui.js"></script>
